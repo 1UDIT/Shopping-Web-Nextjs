@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link"
 
 export  const Navbar = () => {
@@ -11,7 +13,7 @@ export  const Navbar = () => {
                                 Logo Here.
                             </a>
                             <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                                <li><a className="hover:text-gray-200" href="#">Home</a></li>
+                                <li><Link className="hover:text-gray-200" href="/">Home</Link></li>
                                 <li><a className="hover:text-gray-200" href="#">Catagory</a></li>
                                 <li><a className="hover:text-gray-200" href="#">Collections</a></li>
                                 <li><a className="hover:text-gray-200" href="#">Contact Us</a></li>
