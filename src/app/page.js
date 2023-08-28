@@ -29,7 +29,7 @@ export default function Home() {
     fetchData();
   }, []);
 
-  console.log(Data);
+  
 
   const handleadd = (product) => { 
     dispatch(addToCart(product));
@@ -42,7 +42,7 @@ export default function Home() {
           Loading !== false ? Loading :
             Data.map((Item) => {
               return (
-                <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md" key={Item.id}>
+                <div className="relative mt-5 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md" key={Item.id}>
                   <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
                     <Image
                       className="object-cover"

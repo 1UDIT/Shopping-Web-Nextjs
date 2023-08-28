@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
-import { Increment, addToCart } from '@/Redux/Slice/cartSlice';
+import { Increment, Decrement, deleteItem } from '@/Redux/Slice/cartSlice';
 import { useEffect, useState } from 'react';
 
 const Cart = () => {
@@ -14,14 +14,15 @@ const Cart = () => {
         setData(cart);
         // console.log(cart, "cart", cart?.active?.length); 
     }, [cart]);
-    // console.log(Data, "Data", Data?.active?.length);
+
+    console.log(Data.totalAmount, "Data", Data?.active?.length);
 
     return (
         <main>
             <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
             <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
                 <div className="rounded-lg md:w-2/3">
-                    {Data.active === undefined || Data.active.length === 0?
+                    {Data.active === undefined || Data.active.length === 0 ?
                         <p>Cart Empty</p> :
                         Data?.active.map((Item) => {
                             return (
@@ -42,15 +43,13 @@ const Cart = () => {
                                         </div>
                                         <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                                             <div className="flex items-center border-gray-100">
-                                                <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"> - </span>
+                                                <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => dispatch(Decrement(Item))}> - </span>
                                                 <input className="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value={Item.quantity} readOnly />
-                                                <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={()=>dispatch(Increment(Item))}> + </span>
+                                                <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => dispatch(Increment(Item))}> + </span>
                                             </div>
                                             <div className="flex items-center space-x-4">
                                                 <p className="text-sm">{Item.price * Item.quantity}₭</p>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
+                                                <span onClick={() => dispatch(deleteItem(Item))}>remove</span>
                                             </div>
                                         </div>
                                     </div>
@@ -60,10 +59,12 @@ const Cart = () => {
 
                     }
                 </div>
+
+
                 <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                     <div className="mb-2 flex justify-between">
                         <p className="text-gray-700">Subtotal</p>
-                        <p className="text-gray-700">$129.99</p>
+                        <p className="text-gray-700">{Data.totalAmount}</p>
                     </div>
                     <div className="flex justify-between">
                         <p className="text-gray-700">Shipping</p>
@@ -73,7 +74,7 @@ const Cart = () => {
                     <div className="flex justify-between">
                         <p className="text-lg font-bold">Total</p>
                         <div className="">
-                            <p className="mb-1 text-lg font-bold">$134.98 USD</p>
+                            <p className="mb-1 text-lg font-bold">${Data.totalAmount === 0 ? 0 : Math.round(Data.totalAmount + 4.99).toFixed(2)}</p>
                             <p className="text-sm text-gray-700">including VAT</p>
                         </div>
                     </div>
