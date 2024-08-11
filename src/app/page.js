@@ -1,12 +1,11 @@
-'use client'
-import styles from '@/Css/Slider.module.css'
+'use client' 
 import React, { useEffect, useState } from 'react';
 // Import Swiper React components  
 
 import "@/Css/style.css";
 import Image from 'next/image'
 import { Rating } from '@/components/Rating';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '@/Redux/Slice/cartSlice';
 
 
