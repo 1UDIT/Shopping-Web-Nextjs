@@ -1,9 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import '@smastrom/react-rating/style.css'
-import { Navbar } from './Nabar/page'
 import Prvider from '@/Redux/provider'
- 
+import Navbar from './Nabar/page'
+
 
 const inter = Inter({ subsets: ['latin'] })
 

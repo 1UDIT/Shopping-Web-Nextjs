@@ -11,8 +11,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     useEffect(() => {
-        setData(cart);
-        // console.log(cart, "cart", cart?.active?.length); 
+        setData(cart);  
     }, [cart]);
 
     console.log(Data.totalAmount, "Data", Data?.active?.length);
@@ -22,7 +21,7 @@ const Cart = () => {
             <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
             <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
                 <div className="rounded-lg md:w-2/3">
-                    {Data.active === undefined || Data.active.length === 0 ?
+                    {Data?.active === undefined || Data?.active.length === 0 ?
                         <p>Cart Empty</p> :
                         Data?.active.map((Item) => {
                             return (
@@ -64,7 +63,7 @@ const Cart = () => {
                 <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                     <div className="mb-2 flex justify-between">
                         <p className="text-gray-700">Subtotal</p>
-                        <p className="text-gray-700">{Data.totalAmount}</p>
+                        <p className="text-gray-700">{Data?.totalAmount}</p>
                     </div>
                     <div className="flex justify-between">
                         <p className="text-gray-700">Shipping</p>
@@ -74,7 +73,7 @@ const Cart = () => {
                     <div className="flex justify-between">
                         <p className="text-lg font-bold">Total</p>
                         <div className="">
-                            <p className="mb-1 text-lg font-bold">${Data.totalAmount === 0 ? 0 : Math.round(Data.totalAmount + 4.99).toFixed(2)}</p>
+                            <p className="mb-1 text-lg font-bold">${Data?.totalAmount === 0 ? 0 : Math.round(Data?.totalAmount + 4.99).toFixed(2)}</p>
                             <p className="text-sm text-gray-700">including VAT</p>
                         </div>
                     </div>

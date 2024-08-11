@@ -39,7 +39,7 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4 sm:grid-cols-2 ">
         {
           Loading !== false ? Loading :
-            Data.map((Item) => {
+            Data?.map((Item) => {
               return (
                 <div className="relative mt-5 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md" key={Item.id}>
                   <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
