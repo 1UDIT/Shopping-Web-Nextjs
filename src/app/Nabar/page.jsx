@@ -14,9 +14,9 @@ export  const Navbar = () => {
                             </a>
                             <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                                 <li><Link className="hover:text-gray-200" href="/">Home</Link></li>
-                                <li><a className="hover:text-gray-200" href="#">Catagory</a></li>
-                                <li><a className="hover:text-gray-200" href="#">Collections</a></li>
-                                <li><a className="hover:text-gray-200" href="#">Contact Us</a></li>
+                                <li><Link className="hover:text-gray-200" href="#">Catagory</Link></li>
+                                <li><Link className="hover:text-gray-200" href="#">Collections</Link></li>
+                                <li><Link className="hover:text-gray-200" href="#">Contact Us</Link></li>
                             </ul>
                             <div className="hidden xl:flex items-center space-x-5 items-center">
                                 <Link className="flex items-center hover:text-gray-200" href="/Cart">
